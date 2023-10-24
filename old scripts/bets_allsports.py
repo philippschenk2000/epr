@@ -5,44 +5,39 @@ import re
 import smtplib
 import time
 import zoneinfo
-from scipy import stats
 from datetime import timedelta
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from threading import Thread
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-import plotly.express as px
-import requests
-from deep_translator import GoogleTranslator
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+
 import bookies.admiralbet as admiralbet
 import bookies.alphawin as alphawin
+import bookies.asianodds as asianodds
 import bookies.bambet as bambet
 import bookies.bankonbet as bankonbet
 import bookies.bcgame as bcgame
 import bookies.bet3000 as bet3000
-import bookies.bet90 as bet90
+import bookies.bet365 as bet365
 import bookies.betano as betano
 import bookies.betathome as betathome
 import bookies.betclic as betclic
 import bookies.betfury as betfury
 import bookies.betibet as betibet
 import bookies.betmaster as betmaster
+import bookies.betmgm as betmgm
 import bookies.betobet as betobet
 import bookies.betplay as betplay
 import bookies.betrophy as betrophy
-import bookies.bets_api as bets_api
 import bookies.betsamigo as betsamigo
 import bookies.betstro as betstro
+import bookies.betuk as betuk
 import bookies.betvictor as betvictor
 import bookies.betway as betway
 import bookies.bildbet as bildbet
 import bookies.bluechip as bluechip
 import bookies.bpremium as bpremium
 import bookies.bwin as bwin
+import bookies.caesars as caesars
 import bookies.campeonbet as campeonbet
 import bookies.cashalot as cashalot
 import bookies.casumo as casumo
@@ -53,17 +48,24 @@ import bookies.cobrabet as cobrabet
 import bookies.cricbaba as cricbaba
 import bookies.dachbet as dachbet
 import bookies.dafabet as dafabet
+import bookies.draftkings as draftkings
 import bookies.dreambet as dreambet
+import bookies.duelbits as duelbits
 import bookies.evobet as evobet
 import bookies.expekt as expekt
+import bookies.fanduel as fanduel
 import bookies.fdj as fdj
 import bookies.fezbet as fezbet
+import bookies.freshbet as freshbet
 import bookies.gamblingapes as gamblingapes
 import bookies.gastonred as gastonred
+import bookies.genybet as genybet
+import bookies.goldenbet as goldenbet
 import bookies.greatwin as greatwin
 import bookies.happybet as happybet
 import bookies.interwetten as interwetten
 import bookies.ivibet as ivibet
+import bookies.jackbit as jackbit
 import bookies.jets10 as jets10
 import bookies.joabet as joabet
 import bookies.joycasino as joycasino
@@ -74,59 +76,62 @@ import bookies.leovegas as leovegas
 import bookies.librabet as librabet
 import bookies.lilibet as lilibet
 import bookies.livescorebet as livescorebet
+import bookies.lottoland as lottoland
 import bookies.lsbet as lsbet
-import bookies.marathonbet as marathonbet
+import bookies.magicalvegas as magicalvegas
 import bookies.megapari as megapari
 import bookies.merkur_sports as merkur_sports
 import bookies.mobilebet as mobilebet
 import bookies.moonbet as moonbet
+import bookies.mybet_api as mybet_api
+import bookies.mystake as mystake
 import bookies.n1bet as n1bet
 import bookies.nearcasino as nearcasino
 import bookies.neobet as neobet
 import bookies.netbet as netbet
-import bookies.nexbetsports as nexbetsports
 import bookies.nextbet as nextbet
 import bookies.nucleonbet as nucleonbet
-import bookies.odds_api as odds_api
 import bookies.oddset as oddset
 import bookies.olympusbet as olympusbet
 import bookies.onebet as onebet
 import bookies.onexbet as onexbet
 import bookies.onexbit as onexbit
 import bookies.owlgames as owlgames
+import bookies.parimatch as parimatch
 import bookies.paripesa as paripesa
-import bookies.pinnacle as pinnacle
+import bookies.pinnacle_api as pinnacle_api
+import bookies.piwi247 as piwi247
 import bookies.playzilla as playzilla
 import bookies.pmu as pmu
 import bookies.pokerstars as pokerstars
 import bookies.powbet as powbet
+import bookies.ps3838 as ps3838
 import bookies.qbet as qbet
 import bookies.quickwin as quickwin
 import bookies.rabona as rabona
 import bookies.rajbets as rajbets
 import bookies.rocketplay as rocketplay
+import bookies.rollbit as rollbit
 import bookies.roobet as roobet
 import bookies.sgcasino as sgcasino
 import bookies.skybet as skybet
 import bookies.solcasino as solcasino
-import bookies.rollbit as rollbit
 import bookies.sport888 as sport888
 import bookies.sportaza as sportaza
 import bookies.sportingbet as sportingbet
 import bookies.sportwetten_de as sportwetten_de
 import bookies.stake as stake
 import bookies.sultanbet as sultanbet
-import bookies.suprabets as suprabets
 import bookies.terracasino as terracasino
-import bookies.threetwored as threetwored
-import bookies.tipico_api as tipico_api
+import bookies.threeonebet as threeonebet
+import bookies.threetwored2 as threetwored2
 import bookies.tipico as tipico
+import bookies.tiptorro as tiptorro
 import bookies.tipwin as tipwin
 import bookies.twotwobet as twotwobet
 import bookies.twozerobet as twozerobet
 import bookies.unibet as unibet
 import bookies.vave as vave
-import bookies.vbet as vbet
 import bookies.virginbet as virginbet
 import bookies.vistabet as vistabet
 import bookies.wazamba as wazamba
@@ -137,32 +142,18 @@ import bookies.winning as winning
 import bookies.winz as winz
 import bookies.wolfbet as wolfbet
 import bookies.zebet as zebet
-import bookies.zenitbet as zenitbet
 import bookies.zotabet as zotabet
-import bookies.mybet_api as mybet_api
-import bookies.duelbits as duelbits
-import bookies.threetwored2 as threetwored2
-import bookies.lottoland as lottoland
-import bookies.magicalvegas as magicalvegas
-import bookies.tiptorro as tiptorro
-import bookies.genybet as genybet
-import bookies.mystake as mystake
-import bookies.freshbet as freshbet
-import bookies.goldenbet as goldenbet
-import bookies.jackbit as jackbit
-import bookies.threeonebet as threeonebet
-import bookies.bet365 as bet365
-import bookies.draftkings as draftkings
-import bookies.fanduel as fanduel
-import bookies.betmgm as betmgm
-import bookies.caesars as caesars
-import bookies.betuk as betuk
-import bookies.pinnacle_api as pinnacle_api
-import bookies.piwi247 as piwi247
-import bookies.asianodds as asianodds
-import bookies.ps3838 as ps3838
-import bookies.parimatch as parimatch
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import plotly.express as px
+import requests
 import twitter
+from deep_translator import GoogleTranslator
+from scipy import stats
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
 pd.set_option('expand_frame_repr', False)
 pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
@@ -2562,7 +2553,7 @@ def send_mails(surebets, valuebets, recievers):
         mailserver.starttls()
         # re-identify ourselves as an encrypted cnnection
         mailserver.ehlo()
-        mailserver.login(msg['From'], 'mwssmhornzfblkxo')
+        mailserver.login(msg['From'], '')
         for to in recievers:
             mailserver.sendmail(msg['From'], to, msg.as_string())
         mailserver.quit()
