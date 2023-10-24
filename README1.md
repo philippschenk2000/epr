@@ -18,11 +18,20 @@ Code: siehe epr1.py
 ------------------------------
 
 Test1:
+In: -4.2, mmed3
+Out: Input has to be a float or integer.
 
 Test2:
+In: 4, 71
+Out: 7.573333333333333, 37.5
 
 Test3:
-
+In: 5769.6749, 63748.0
+Out: 10581.632255517223, 34758.83745
 
 Beschreibung des Programms:
 ------------------------------
+
+Nach Input der Werte sichere ich die Funktion und den User wissend durch die try-except funktion ab.
+Nach erfolgreicher float-fähiger Zahlen springt das Programm zur Berechnung des harmonischen und arithmetischen Mittels, welche abgespeichert und daraufhin in die letzte Funktion zum Output in der Konsole weitergegeben werden.
+Mittels f-string werden beide berechneten Werte ungerundert ausgegeben.
