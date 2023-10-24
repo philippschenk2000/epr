@@ -32,6 +32,6 @@ Out: 10581.632255517223, 34758.83745
 Beschreibung des Programms:
 ------------------------------
 
-Nach Input der Werte sichere ich die Funktion und den User wissend durch die try-except funktion ab.
-Nach erfolgreicher float-fähiger Zahlen springt das Programm zur Berechnung des harmonischen und arithmetischen Mittels, welche abgespeichert und daraufhin in die letzte Funktion zum Output in der Konsole weitergegeben werden.
-Mittels f-string werden beide berechneten Werte ungerundert ausgegeben.
+Nach Input der Werte in der Konsole sichert das Programm die Funktion und den User wissend durch die try-except funktion ab.
+Nach erfolgreicher float oder integer-entsprechenden Zahlen springt das Programm zur Berechnung des harmonischen und arithmetischen Mittels, welche abgespeichert und daraufhin in die letzte Funktion zum Output in der Konsole weitergegeben werden.
+Mittels f-string werden beide berechneten Werte ungerundet ausgegeben.
