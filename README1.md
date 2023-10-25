@@ -13,7 +13,7 @@ Aus: Da Antwortsätze ausgegeben werden sollen in beiden Fällen, gebe ich es in
 Entwurfsmuster:
 ------------------------------
 
-Ich werde auch in Zukunft nach einem ähnlichen Muster vorgehen, nämlich dass die Überfunktion "def main" regelmäßig weitere funktionen aufruft und somit als "Überfunktion" gilt. 
+Ich werde auch in Zukunft nach einem ähnlichen Muster vorgehen, nämlich dass die Überfunktion "def main" regelmäßig weitere Funktionen aufruft und somit als "oberste Funktion" gilt. 
 Aus Gründen der Übersichtlichkeit füge ich mehrere ähnliche Aufgaben dann zu kleinen Unterfunktionen zusammen, sodass diese von "def main" aus gesteuert werden.
 
 Code: siehe epr1.py
