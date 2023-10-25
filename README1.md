@@ -1,7 +1,8 @@
 # epr1
+Aufgabe ÜE-00-1
+
 Berechnung von Harmonischem und arithmetischem Mittel von zwei Zahlen in python=3.0 oder neuer
 
-Aufgabe ÜE-00-1
 
 Ein- und Ausgabeformat:
 ------------------------------
