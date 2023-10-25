@@ -37,3 +37,4 @@ Beschreibung des Programms:
 Nach Input der Werte in der Konsole sichert das Programm die Funktion und den User wissend durch die try-except funktion ab.
 Nach erfolgreicher float oder integer-entsprechenden Zahlen springt das Programm zur Berechnung des harmonischen und arithmetischen Mittels, welche abgespeichert und daraufhin in die letzte Funktion zum Output in der Konsole weitergegeben werden.
 Mittels f-string werden beide berechneten Werte ungerundet ausgegeben.
+https://github.com/philippschenk2000/epr/blob/main/epr1.py 
