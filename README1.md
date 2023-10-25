@@ -1,4 +1,5 @@
 # epr1
+Harmonisches und arithmetisches Mittel von zwei Zahlen
 
 Aufgabe ÜE-00-1
 
