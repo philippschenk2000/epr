@@ -4,7 +4,7 @@ def main():
     try:
         a = float(input('Enter first number: '))
         b = float(input('Enter second number: '))
-        # NOW CONDUCT TO EACH PART
+        # NOW CONDUCT TO EACH PART & BE AWARE OF DIVING WITH ZERO
         arithmetic_mid = calc_arithmetic_mid(a, b)
         if arithmetic_mid == 0:
             returning('Because the sum of both is zero, the harmonic mean can not be calculated', arithmetic_mid)
