@@ -1,19 +1,18 @@
-# epr1
-Aufgabe ÜE-00-1
+# epr2 Aufgabe 2
+Aufgabe ÜE-01
 
 Berechnung von Harmonischem und arithmetischem Mittel von zwei Zahlen in python=3.0 oder neuer
-
 
 Ein- und Ausgabeformat:
 ------------------------------
 
-Ein: 2 Zahlen, da aber auch mit nachkommazahlen umgegangen werden möchte, wird der Input mittels float entgegen genommen.
-Aus: Da Antwortsätze ausgegeben werden sollen in beiden Fällen, gebe ich es in diesem Fall als ein f-string aus, sodass nur eine variable pro print-funktion ausgegebne wird.
+Ein: 3 Integer-Zahlen, die ersten beiden zwischen 0 & 110.
+Aus: Da Antwortsätze ausgegeben werden sollen in beiden Fällen, gebe ich es in diesem Fall als ein f-string aus, sodass dabei die entstehenden Bonus Punkte für die Klausur ausgegeben werden.
 
 Annahmen:
 ------------------------------
 
-keine
+So wie programmiert: keine, der Nutzer wird auf alle möglichen Fehler hingewiesen.
 
 Entwurfsmuster:
 ------------------------------
@@ -25,16 +24,16 @@ Code: siehe epr1.py
 ------------------------------
 
 Test1:
-In: -4.2, mmed3
-Out: Input has to be a float or integer.
+In: 90, 40, 50
+Out: The bonus points for the input would be 9.29 points
 
 Test2:
-In: 4, 71
-Out: 7.573333333333333, 37.5
+In: -10, 40, 10
+Out: First number and second number have to be between 0 and 110
 
 Test3:
-In: 5769.6749, 63748.0
-Out: 10581.632255517223, 34758.83745
+In: 0, 106.9
+Out: All input has to be integer.
 
 Test4: 
 In 0, 0 
@@ -44,7 +43,8 @@ can not be calculated, The arithmetic mean is: 0.0
 Beschreibung des Programms:
 ------------------------------
 
-Nach Input der Werte in der Konsole sichert das Programm die Funktion und den User wissend durch die try-except funktion ab.
-Nach erfolgreicher float oder integer-entsprechenden Zahlen springt das Programm zur Berechnung des harmonischen und arithmetischen Mittels, welche abgespeichert und daraufhin in die letzte Funktion zum Output in der Konsole weitergegeben werden.
-Mittels f-string werden beide berechneten Werte ungerundet ausgegeben.
+Nach Input der Werte in der Konsole sichert das Programm die Funktion und den User wissend durch die try-except funktion ab, sodass nur integer-Werte in die folgenden Berechnungen aufgenommen werden.
+Nach erfolgreicher integer-entsprechenden Zahlen springt das Programm zur Berechnung der maximalen Range (0 - 110) für die ersten beiden Werte uns informiert den Nutzer erneut bei falschen Angaben.
+Bei richtiger Angabe der Werte erfolgt die Berechnung der zum Bestehen notwendigen Punkten (ZBNP).
+Mittels f-string wird der errechnete Wert (ZBNP) gerundet auf 2 Nachkommastellen wie in einem angegebenem Beispiel ausgegeben.
 https://github.com/philippschenk2000/epr/blob/main/epr1_Schenk_7093700/epr1_Schenk_7093700.py
