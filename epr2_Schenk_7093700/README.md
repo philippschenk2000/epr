@@ -36,9 +36,8 @@ In: 0, 106.9
 Out: All input has to be integer.
 
 Test4: 
-In 0, 0 
-Out: The harmonic mean is: Because the sum of both is zero, the harmonic mean
-can not be calculated, The arithmetic mean is: 0.0
+In 110, 110, 50
+Out: The bonus points for the input would be 12.5 points
 
 Beschreibung des Programms:
 ------------------------------
@@ -47,4 +46,4 @@ Nach Input der Werte in der Konsole sichert das Programm die Funktion und den Us
 Nach erfolgreicher integer-entsprechenden Zahlen springt das Programm zur Berechnung der maximalen Range (0 - 110) für die ersten beiden Werte uns informiert den Nutzer erneut bei falschen Angaben.
 Bei richtiger Angabe der Werte erfolgt die Berechnung der zum Bestehen notwendigen Punkten (ZBNP).
 Mittels f-string wird der errechnete Wert (ZBNP) gerundet auf 2 Nachkommastellen wie in einem angegebenem Beispiel ausgegeben.
-https://github.com/philippschenk2000/epr/blob/main/epr1_Schenk_7093700/epr1_Schenk_7093700.py
+https://github.com/philippschenk2000/epr/tree/main/epr2_Schenk_7093700
