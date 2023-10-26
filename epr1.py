@@ -4,13 +4,12 @@ def main():
     try:
         a = float(input('Enter first number: '))
         b = float(input('Enter second number: '))
-        if a + b == 0:
-            arithmetic_mid = calc_arithmetic_mid(a, b)
-            returning('Because the sum of both is zero, the arithmetic mid can not be calculated', arithmetic_mid)
+        # NOW CONDUCT TO EACH PART
+        arithmetic_mid = calc_arithmetic_mid(a, b)
+        if arithmetic_mid == 0:
+            returning('Because the sum of both is zero, the harmonic mean can not be calculated', arithmetic_mid)
         else:
-            # NOW CONDUCT TO EACH PART
             harmonic_mid = calc_harmonic_mid(a, b)
-            arithmetic_mid = calc_arithmetic_mid(a, b)
             returning(harmonic_mid, arithmetic_mid)
     except:
         print('Input has to be a float or integer.')

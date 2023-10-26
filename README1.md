@@ -36,6 +36,11 @@ Test3:
 In: 5769.6749, 63748.0
 Out: 10581.632255517223, 34758.83745
 
+Test4: 
+In 0, 0 
+Out: The harmonic mean is: Because the sum of both is zero, the harmonic mean
+can not be calculated, The arithmetic mean is: 0.0
+
 Beschreibung des Programms:
 ------------------------------
 
