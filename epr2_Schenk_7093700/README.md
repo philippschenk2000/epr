@@ -17,7 +17,7 @@ Ich werde auch in Zukunft nach einem ähnlichen Muster vorgehen, nämlich dass d
 Aus Gründen der Übersichtlichkeit füge ich mehrere ähnliche Aufgaben dann zu kleinen Unterfunktionen zusammen, sodass diese von "def main" aus gesteuert werden.
 In jedem Falle versuche ich den Code so darzustellen, dass kein Fehler letztendlich mehr auftritt bzw. der Nutzer über weiteres Vorgehen genau informiert wird.
 
-Code: siehe epr1.py
+Code: siehe epr2_exc2_Schenk_7093700.py
 ------------------------------
 Test1:
 In: 90, 40, 50
@@ -65,7 +65,7 @@ Ich werde auch in Zukunft nach einem ähnlichen Muster vorgehen, nämlich dass d
 Aus Gründen der Übersichtlichkeit füge ich mehrere ähnliche Aufgaben dann zu kleinen Unterfunktionen zusammen (falls vorhanden), sodass diese von "def main" aus gesteuert werden.
 In jedem Falle versuche ich den Code so darzustellen, dass kein Fehler letztendlich mehr auftritt bzw. der Nutzer über weiteres Vorgehen genau informiert wird.
 
-Code: siehe epr1.py
+Code: siehe epr2_exc3_Schenk_7093700.py
 ------------------------------
 Test1:
 In: 4.0
