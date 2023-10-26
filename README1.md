@@ -10,6 +10,11 @@ Ein- und Ausgabeformat:
 Ein: 2 Zahlen, da aber auch mit nachkommazahlen umgegangen werden möchte, wird der Input mittels float entgegen genommen.
 Aus: Da Antwortsätze ausgegeben werden sollen in beiden Fällen, gebe ich es in diesem Fall als ein f-string aus, sodass nur eine variable pro print-funktion ausgegebne wird.
 
+Annahmen:
+------------------------------
+
+keine
+
 Entwurfsmuster:
 ------------------------------
 
