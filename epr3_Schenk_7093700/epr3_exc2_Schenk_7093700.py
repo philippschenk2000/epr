@@ -51,5 +51,5 @@ def catalan_constant_d_e(a, b, steps):
 #f_a = function_a(input('First number: '), input('Second number: '))
 #f_b = function_b(preferred_number)
 #f_c = function_c(preferred_length)
-f_d_e = catalan_constant_d_e(4, 10, 3)
+#f_d_e = catalan_constant_d_e(4, 10, 3)
 
