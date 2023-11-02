@@ -17,10 +17,11 @@ def main():
 
 
 # BONUS POINTS CALCULATION
-def calc_bonus_points(gpr, epr, zbnp): # erklärung der formel in der doc
+def calc_bonus_points(gpr, epr, zbnp):
     return round(min(zbnp / 4, (epr + gpr) / 14), 2)
 
 
+# PRINT IN CONSOLE
 def returning(bonus_points):
     print(f'The bonus points for the input would be {bonus_points} points')
 
