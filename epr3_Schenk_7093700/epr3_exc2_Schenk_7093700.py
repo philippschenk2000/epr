@@ -66,8 +66,36 @@ def catalan_constant_d_e(a, b, steps):
             print('Difference is: ', ((listed[-1] - listed[-2])))    # abs()?
 
 
-#f_a = function_a(input('First number: '), input('Second number: '))
-#f_b = function_b(12)
-#f_c = function_c(1)
+f_a = function_a(input('First number: '), input('Second number: '))
+# TEST 1:
+# IN:  SHOULD BE:   OUT:
+# TEST 2:
+# IN:  SHOULD BE:   OUT:
+# TEST 3:
+# IN:  SHOULD BE:   OUT:
+
+f_b = function_b(12)
+
+# TEST 1:
+# IN:  SHOULD BE:   OUT:
+# TEST 2:
+# IN:  SHOULD BE:   OUT:
+# TEST 3:
+# IN:  SHOULD BE:   OUT:
+
+f_c = function_c(1)
+# TEST 1:
+# IN:  SHOULD BE:   OUT:
+# TEST 2:
+# IN:  SHOULD BE:   OUT:
+# TEST 3:
+# IN:  SHOULD BE:   OUT:
+
 f_d_e = catalan_constant_d_e(4, 10, 3)
+# TEST 1:
+# IN:  SHOULD BE:   OUT:
+# TEST 2:
+# IN:  SHOULD BE:   OUT:
+# TEST 3:
+# IN:  SHOULD BE:   OUT:
 
