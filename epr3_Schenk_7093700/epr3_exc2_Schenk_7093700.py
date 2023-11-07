@@ -48,15 +48,20 @@ def function_c(length):
 def catalan_constant_d_e(a, b, steps):
     # CREATE AN EMPTY LIST
     listed = []
-    #
+    # FOR EVERY VALUE (INPUT: 4, 10, 3)
     for r in range(a, b, steps):
+        # CREATE A NEW EMPTY LIST FOR EVERY r
         listed2 = []
+        # CALCULATE CATALAN FORMULA AND ADD THEM INTO THE LIST FOR r
         for n in range(r):
             nominator = (-1)**n
             denominator = (2*n + 1)**2
             listed2.append(nominator / denominator)
+        # AS THE LIST GOT FILLED FOR r, THE CATALAN RESULT FOR EVERY r IS THE SUM OF ALL LIST ELEMENTS
         print('n =', r, ' Catalan constant is: ', sum(listed2))
         listed.append(sum(listed2))
+        # TO GET THE DIFFERENCE BETWEEN r AND r-1 A THE LENGTH OF THE LIST NEEDS TO BE OVER ONE
+        # THEN THE DIFFERENCE CAN BE EASILY CALCULATED BETWEEN THE NEIGHBOURING LIST ELEMENTS
         if len(listed) > 1:
             print('Difference is: ', ((listed[-1] - listed[-2])))    # abs()?
 
