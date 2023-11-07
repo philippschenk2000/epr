@@ -14,7 +14,7 @@ def function_a(a, b):
 
 
 def function_b(a):
-    # SET STEPS TO 0 IN CASE a IS 0
+    # SET STEPS TO 0 BECAUSE NO STEP WAS DONE TIL THIS POINT
     steps = 0
     while a != 0:
         a = a / 2
@@ -68,34 +68,34 @@ def catalan_constant_d_e(a, b, steps):
 
 f_a = function_a(input('First number: '), input('Second number: '))
 # TEST 1:
-# IN:  SHOULD BE:   OUT:
+# IN:       SHOULD BE:      OUT:
 # TEST 2:
-# IN:  SHOULD BE:   OUT:
+# IN:       SHOULD BE:      OUT:
 # TEST 3:
-# IN:  SHOULD BE:   OUT:
+# IN:       SHOULD BE:      OUT:
 
 f_b = function_b(12)
 
 # TEST 1:
-# IN:  SHOULD BE:   OUT:
+# IN:       SHOULD BE:      OUT:
 # TEST 2:
-# IN:  SHOULD BE:   OUT:
+# IN:       SHOULD BE:      OUT:
 # TEST 3:
-# IN:  SHOULD BE:   OUT:
+# IN:       SHOULD BE:      OUT:
 
 f_c = function_c(1)
 # TEST 1:
-# IN:  SHOULD BE:   OUT:
+# IN:       SHOULD BE:      OUT:
 # TEST 2:
-# IN:  SHOULD BE:   OUT:
+# IN:       SHOULD BE:      OUT:
 # TEST 3:
-# IN:  SHOULD BE:   OUT:
+# IN:       SHOULD BE:      OUT:
 
 f_d_e = catalan_constant_d_e(4, 10, 3)
 # TEST 1:
-# IN:  SHOULD BE:   OUT:
+# IN:       SHOULD BE:      OUT:
 # TEST 2:
-# IN:  SHOULD BE:   OUT:
+# IN:       SHOULD BE:      OUT:
 # TEST 3:
-# IN:  SHOULD BE:   OUT:
+# IN:       SHOULD BE:      OUT:
 
