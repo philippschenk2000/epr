@@ -62,8 +62,8 @@ def catalan_constant_d_e(a, b, steps):
         # AS THE LIST GOT FILLED FOR r, THE CATALAN RESULT FOR EVERY r IS THE SUM OF ALL LIST ELEMENTS
         print('n =', r, ' Catalan constant is: ', sum(listed2))
         listed.append(sum(listed2))
-        # TO GET THE DIFFERENCE BETWEEN r AND r-1 A THE LENGTH OF THE LIST NEEDS TO BE OVER ONE
-        # THEN THE DIFFERENCE CAN BE EASILY CALCULATED BETWEEN THE NEIGHBOURING LIST ELEMENTS
+        # TO GET THE DIFFERENCE BETWEEN r AND r-1, THE LENGTH OF THE LIST NEEDS TO BE OVER ONE
+        # THEN THE DIFFERENCE CAN EASILY BE CALCULATED BETWEEN THE NEIGHBOURING LIST ELEMENTS
         if len(listed) > 1:
             print('Difference is: ', ((listed[-1] - listed[-2])))    # abs()?
 
