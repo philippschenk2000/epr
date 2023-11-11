@@ -25,12 +25,12 @@ def function_b(a):
     return steps
 
 
-def function_c(length):
+def function_c(n, m):
 
     # PUT 0 IN A LIST IN CASE THE length IS 0
     listed = [0]
     # CREATE ONE ALTERNATING LIST WITH ONEs and ZEROs
-    for l in range(length):
+    for l in range(n):
         if listed[-1] == 0:
             listed.append(1)
         else:
@@ -40,7 +40,7 @@ def function_c(length):
     # KICK OUT THE LAST ELEMENT OF THE FIRST LIST
     listed = listed[:-1]
     # PRINT BOTH LISTS ALSO ALTERNATING IN THE CONSOLE, WITHOUT COMMAS AND BRACKETS
-    for k in range(len(listed)):
+    for k in range(m):
         if k % 2 == 0:
             print(str(listed).replace('[', '').replace(']', '').replace(',', ''))
         else:
@@ -86,35 +86,33 @@ print(f_b)
 # TEST 3:
 # IN: 389270.578      SHOULD BE: 1094     OUT: 1094
 
-f_c = function_c(2)
+f_c = function_c(4, 6)
 # TEST 1:
-# IN: 1      SHOULD BE: 0     OUT: 0
+# IN: 0, 0      SHOULD BE: (nothing)     OUT: (nothing)
 
 # TEST 2:
-# IN: 6
+# IN: 4, 1
 # SHOULD BE:
-# 0 1 0 1 0 1
-# 1 0 1 0 1 0
-# 0 1 0 1 0 1
-# 1 0 1 0 1 0
-# 0 1 0 1 0 1
-# 1 0 1 0 1 0
+# 0 1 0 1
 # OUT:
-# 0 1 0 1 0 1
-# 1 0 1 0 1 0
-# 0 1 0 1 0 1
-# 1 0 1 0 1 0
-# 0 1 0 1 0 1
-# 1 0 1 0 1 0
+# 0 1 0 1
 
 # TEST 3:
-# IN: 2
+# IN: 4, 6
 # SHOULD BE:
-# 0 1
-# 1 0
+# 0 1 0 1
+# 1 0 1 0
+# 0 1 0 1
+# 1 0 1 0
+# 0 1 0 1
+# 1 0 1 0
 # OUT:
-# 0 1
-# 1 0
+# 0 1 0 1
+# 1 0 1 0
+# 0 1 0 1
+# 1 0 1 0
+# 0 1 0 1
+# 1 0 1 0
 
 f_d_e = catalan_constant_d_e(4, 5, 1)
 # TEST 1:
