@@ -114,7 +114,7 @@ f_c = function_c(4, 6)
 # 0 1 0 1
 # 1 0 1 0
 
-f_d_e = catalan_constant_d_e(4, 5, 1)
+f_d_e = catalan_constant_d_e(4, 10, 3)
 # TEST 1:
 # IN: 4, 10, 3
 # SHOULD BE:
