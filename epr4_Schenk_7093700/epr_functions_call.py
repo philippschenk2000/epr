@@ -10,7 +10,7 @@ for o in options:
     print('Option', o, ':', options[str(o)])
 
 option = input('Enter you favorite option: ')
-print('You have choosed: ', options[str(option)])
+print('You choosed: ', options[str(option)])
 
 if option == '1':
     result = epr_functions.decimal_to_octal(int(input('Enter your decimal number you want to transform into octal: ')))

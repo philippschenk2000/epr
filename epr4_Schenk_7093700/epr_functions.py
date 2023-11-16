@@ -77,7 +77,6 @@ def decimal_to_basis(zahl, base):
                     zahl = ohnerest / base
                     print(zahl, 'rest is:', rest)
                     binary_list.append(int(rest))
-                print(binary_list)
                 # THE REST NUMBERS TO REST NUMBERS / REST CHARACTERS
                 binary_list2 = []
                 for o in binary_list:
@@ -176,6 +175,5 @@ if __name__ == '__main__':
     print()
     # a = decimal_to_octal(input('Enter a beautiful decimal number: '))
     # b = decimal_to_basis(input('Enter a beautiful decimal number: '), input('Enter a base for your beautiful number: '))
-    # c = chaos_turtle(3, 0, 0)
-    #c = chaos_turtle2(3, 0, 0)
+    # c = chaos_turtle2(3, 0, 0)
 
