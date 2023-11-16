@@ -51,7 +51,7 @@ def catalan_constant_d_e(a, b, steps):
     # CREATE AN EMPTY LIST
     listed = []
     # FOR EVERY VALUE (INPUT: 4, 10, 3)
-    for r in range(a, b, steps):
+    for r in range(a, b + 1, steps):
         # CREATE A NEW EMPTY LIST FOR EVERY r
         listed2 = []
         # CALCULATE CATALAN FORMULA AND ADD THEM INTO THE LIST FOR r
