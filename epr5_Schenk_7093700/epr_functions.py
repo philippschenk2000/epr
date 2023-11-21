@@ -8,7 +8,7 @@ import requests
 def call_api():
     url = 'https://lrs.studiumdigitale.uni-frankfurt.de/data/xAPI/activities/state?activityId=https://moodle.studiumdigitale.uni-frankfurt.de/course.d06f71786ac6450bbd60e752b665a84f&agent={"objectType":"Agent","name":"Schenk, Philipp","account":{"name":"s5477353","homePage":"https://moodle.studiumdigitale.uni-frankfurt.de/"}}&stateId=state_20221101.175850'
     data = {"question|-_-|c8a4e37703e846b68481c5365303d03c":{"answers":[False,True,True,True],"points":0,"response":"0_1_0_0","triesMade":2,"solutionShown":False,"history":[{"answers":[True,False,False,False],"points":100,"response":"1_0_0_0","triesMade":0,"solutionShown":False,"timestamp":1698951588496}],"timestamp":1700583717461}}
-    headers = {'Authorization': 'Basic ZjNiYzhkMTAxZjMzMjNhYzVmYTY2ZjkxOGMzNDc2NTVkM2JhMzE0NjpmYmE5YTRiNDVlNGUwYjNlZTZmNTg5M2YyMzg3ODdhODFlOWE4OTE0',
+    headers = {'Authorization': 'Basic ',
                'X-Experience-API-Version': '1.0.1'}
     response = requests.post(url, headers=headers, json=data)
     print(response)
