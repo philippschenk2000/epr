@@ -12,7 +12,7 @@ def load_players() -> [str]:
         print('Count of players should be 3 or 4.')
     else:
         return players
-#
+
 
 def initialize_variables(players) -> {str: int} and {str: list}:
     # DETERMINE THE GAME VARIABLES
