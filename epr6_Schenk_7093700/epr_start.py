@@ -9,7 +9,7 @@ def main():
 
     players = epr_cards2.load_players()
     player_cards, score = epr_cards2.initialize_variables(players)
-
+    epr_cards2.play_game(players, score, player_cards)
 
 
 
