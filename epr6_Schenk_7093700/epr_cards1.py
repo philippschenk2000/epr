@@ -43,7 +43,7 @@ def compare_two_cards(card_one, card_two) -> int:
         return 2
 
 
-def compare_two_cards_trump(card_one, card_two, trump) -> int:
+def get_winner(card_one, card_two, trump) -> int:
     """ This function compares the first 2 cards from the shuffled list based on their value ands the trump.
 
     """
