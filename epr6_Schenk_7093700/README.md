@@ -3,8 +3,8 @@ Programmierung eines Kartenspiels in python==3.0 oder neuer
 
 Ein- und Ausgabeformat:
 ------------------------------
-Ein: 3 Integer-Zahlen, die ersten beiden zwischen 0 & 110.
-Aus:
+Ein: 3 bis 4 Spielernamen, getrennt durch Kommas
+Aus: Spielzwischenstände und Sieger
 
 Annahmen:
 ------------------------------
@@ -16,7 +16,9 @@ ein Spieler die Trumpffarbe nicht spielen, darf dieser Spieler eine andere Farbe
 wird die Trumpffarbe neu bestimmt. Die Karte mit dem höchsten Wert der Trumpffarbe gewinnt und der
 Spieler, der diese Karte ausgespielt hat, bekommt alle Karten des Stichs. Karten, die eine andere Farbe als die
 Trumpffarbe haben, können einen Stich nie gewinnen. Nach jedem Stich werden die Stichkarten ausgewertet
-und die Strafpunkte der Spieler aufaddiert. Jede Kreuz-Karte ergibt einen Strafpunkt
+und die Strafpunkte der Spieler aufaddiert. Jede Kreuz-Karte ergibt einen Strafpunkt. Es gibt drei verschiedene Farben 
+(Karo, Herz, und Kreuz). Die jeweils höchste Karte einer Farbe ist die 4, die
+niedrigste eine 1. Zu Beginn des Spiels werden alle Karten vollständig an die Spieler verteilt.
 
 Entwurfsmuster:
 ------------------------------
@@ -167,4 +169,11 @@ Code: siehe epr3_exc2_Schenk_7093700.py
 # epr6 Aufgabe -- DOKUMENTATION
 Beschreibung des Programms:
 ------------------------------
-
+Das vorliegende Python-Skript beschreibt ein Kartenspiel, das aus mehreren Funktionen besteht, welche jeweils einen spezifischen Teil des Spielablaufs abdecken. 
+Zunächst müssen die Spieler ihre Namen einzugeben, die dann in einer Liste gespeichert werden. Die Namen müssen durch Kommas getrennt eingegeben werden, und das Spiel erfordert zwischen drei und vier Spielern.
+Danach werden Karten erstellt, gemischt und an die Spieler verteilt.
+Danach wird ein dictionary erstellt, das die Karten jedes Spielers sowie einen Punktestand für jeden Spieler enthält.
+Die Kernfunktion des Spiels ist play_game(players, score, player_cards), die den Spielablauf steuert. In jeder Runde wird ein Trumpf bestimmt, und die Spieler legen ihre Karten aus.
+dabei wird der Gewinner jeder Runde bestimmt, woraufhin der Punktestand aktualisiert wird.
+Zur Aktualisierung des Punktestands dient die Funktion update_score(card_played, score, rest_players, playing_order). Sie erhält Informationen über die gespielte Karte und den Rundengewinner und passt dementsprechend den Punktestand an.
+Schließlich wird der oder die Gewinner des Spiels, basierend auf den gesammelten Punkten, ermittelt.
