@@ -57,6 +57,7 @@ def play_game(players, score, player_cards) -> {str: int}:
         # THE TRUMP OF EACH ROUND GETS SELECTED BY THE FIRST PLAYER
         trump = [player_cards[player][rounding][1] for player in playing_order][0]
         print(f'\nRound {rounding + 1}:\nFirst player is', playing_order[0].title(), ', so', trump, 'is trump.')
+        print('First played card:', player_cards[playing_order[0]][rounding])
         rest_players = [p for p in playing_order if p != playing_order[0]]
         card_one = ''
         card_two = ''
@@ -90,10 +91,13 @@ def update_score(card_played, score, rest_players, playing_order) -> {str: int}:
     """
     if card_played == 1:
         score[str(playing_order[0])] = score[str(playing_order[0])] + 1
+        print('Winner of this round is:', playing_order[0])
     elif card_played == 0:
         score[str(rest_players[1])] = score[str(rest_players[1])] + 1
+        print('Winner of this round is:', playing_order[1])
     elif card_played == 2:
         score[str(rest_players[0])] = score[str(rest_players[0])] + 1
+        print('Winner of this round is:', playing_order[0])
     return score
 
 
