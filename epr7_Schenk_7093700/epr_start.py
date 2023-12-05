@@ -10,7 +10,7 @@ def main():
     # DEFINE GRAPH VIA INPUT
     graphing = [((1, 1), (3, 3)), ((1, 1), (4, 1)), ((7, 7), (4, 2)), ((7, 7), (1, 1))]
     try:
-        graphing = [eval(input('Enter your edge number ' + str(g) + ' like this format: ((1, 1), (3, 3)): ')) for g in range(int(input('Enter number of edges in your graph: ')))]
+        #graphing = [eval(input('Enter your edge number ' + str(g) + ' in coordinate format: ((1, 1), (3, 3)): ')) for g in range(int(input('Enter number of edges in your graph: ')))]
         # TRY: TEST IF THE PROVIDED GRAPH REALLY IS IN CORRECT FORMAT
         tree_status = epr_graph.test_for_tree(graphing)
         #tree_status = True
