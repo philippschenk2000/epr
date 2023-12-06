@@ -25,7 +25,7 @@ def main():
                 print('In the tree there is no root available.')
         else:
             print('The provided graph is no tree!')
-    except ValueError:
+    except TypeError:
         print('Please provide a correct graph in the format like this \n((1, 1), (3, 3))')
 
 
