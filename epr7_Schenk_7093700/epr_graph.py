@@ -21,7 +21,7 @@ def test_for_tree(graphing):
                 # IF THE FIRST START_NODE IS ANYWHERE THE END_NODE SET TREE TO FALSE
                 end_node_copy = new_e[1]
                 if end_node_copy == start_node:
-                    print('Reason for being a tree: ', start_node, end_node, start_node_copy, end_node_copy)
+                    print('Reason for being no tree: ', start_node, end_node, start_node_copy, end_node_copy)
                     tree = False
                     break
     return tree
