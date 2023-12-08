@@ -1,4 +1,5 @@
 # epr6 Aufgabe -- ANALYSE
+__author__ = "7093700, Schenk"
 Programmierung des Testens von Graphen auf die Baumeigenschaft in python==3.0 oder neuer
 
 Ein- und Ausgabeformat:
