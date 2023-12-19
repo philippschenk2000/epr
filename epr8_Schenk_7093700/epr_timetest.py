@@ -14,20 +14,24 @@ def main(matrix):
 
     """
     starting_point = (1, 1)
+    # 100 at the beginning and 100 et the end as well as one extra line of 100s at first position as well as at the end
     matrix_with_borders = epr_exercise1.create_borders(matrix, 100)
     print('This is the matrix with borders of value=100:')
     [print(row) for row in matrix_with_borders]
-    # REMEMBER THE PATH FROM NOW ON
-    # CALL THE OTHER FUNCTION ONE TIME WHICH CALLS ITSELF RECURSIVELY
+
+    # case: the matrix just contains one row and one column
     ending_point = (len(matrix_with_borders) - 1, len(matrix_with_borders) - 1)
     if starting_point == ending_point:
         return [starting_point]
 
+    # always: starting point as well as the costs at the starting point should be included
     path = [starting_point]
     costs = [matrix_with_borders[1][1]]
     print('\n', '-' * 50, '1) This part is for the local optimum', '-' * 50)
+    # set the first time before the function
     start_time = time.time()
     start_timeit = timeit.timeit()
+    # recursively walks the matrix locally/ based on the values of the direct neighbours
     path, costs = epr_exercise1.walk_the_matrix_locally(matrix_with_borders, starting_point, ending_point, path, costs)
     end_time = time.time()
     end_timeit = timeit.timeit()
@@ -39,12 +43,15 @@ def main(matrix):
     print('\n', '-' * 50, '2) This part is for the global optimum', '-' * 50)
     best_path = [()]
     best_cost = [100]
+    # set the first time before the function
     start_time = time.time()
     start_timeit = timeit.timeit()
+    # recursively walks the matrix globally/ based on the values of all possible ways to go in the matrix
     optimal_path, optimal_costs = epr_exercise1.walk_the_matrix_globally(matrix_with_borders, starting_point[0], starting_point[1], [], 0, best_cost, best_path)
     end_time = time.time()
     end_timeit = timeit.timeit()
     print(optimal_path, sum(optimal_costs))
+    # print the time difference
     print('Needed time (in seconds, with package time):', end_time - start_time)
     print('Needed time (in seconds, with package timeit):', end_timeit - start_timeit)
     print('The optimal path for the starting point to go to the end point is:\n', optimal_path[0])
@@ -58,6 +65,7 @@ testset = [
      [-4, -4, 6, 1, -1, 8, -4, -2], [-4, -4, 6, 1, -1, 8, -1, 3], [-4, -4, 6, 1, -1, 8, -1, 5], [-4, -4, 6, 1, -1, 8, -1, 7]]
     ]
 
+# test different matrices from the testset
 for matrix in testset:
     main(matrix)
     print('_' * 180)
