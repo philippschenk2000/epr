@@ -1,6 +1,6 @@
 """ This script contains the time stopping function for the new exercise in epr """
 
-__author__ = "7093700, Schenk"
+__author__ = "7093700, Schenk 8017459, Ratnakumar"
 
 
 import time
