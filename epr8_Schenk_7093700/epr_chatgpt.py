@@ -1,6 +1,6 @@
 """ This script contains the chatgpt exercise in epr """
 
-__author__ = "7093700, Schenk 8017459, Ratnakumar"
+__author__ = "7093700, Schenk"
 
 
 def is_happy(s):
