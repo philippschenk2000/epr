@@ -1,6 +1,6 @@
 """ This script contains different functions for the new exercise in epr """
 
-__author__ = "7093700, Schenk xxxxxxx, Lautsch"
+__author__ = "7093700, Schenk 7001303, Lautsch"
 
 
 import tkinter as tk
