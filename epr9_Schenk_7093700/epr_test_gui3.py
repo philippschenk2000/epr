@@ -207,104 +207,98 @@ def getdata(possible_ressources):
 
     root.mainloop()
 
+class Resource:
+    def __init__(self, costs_fix=0, yearly_revenue=0, inhabitants_change=0, sentiment_change=0):
+        self.costs_fix = costs_fix
+        self.yearly_revenue = yearly_revenue
+        self.inhabitants_change = inhabitants_change
+        self.sentiment_change = sentiment_change
 
-class Ressource:
-    def __init__(self):
-        self.costs_fix = 0
-        self.yearly_revenue = 0
-        self.inhabitants_change = 0
-        self.sentiment_change = 0
-
-    def apply_effects(self, inhabitants_now, sentiment_now, costs_fix):
-        # Convert to integers if they are strings
+    def apply_effects(self, inhabitants_now, sentiment_now, bankroll_now=None):
         inhabitants_now = int(inhabitants_now)
         sentiment_now = int(sentiment_now)
-        costs_fix = int(costs_fix)
-
-        # Perform the arithmetic operations
         inhabitants_now += self.inhabitants_change
         sentiment_now += self.sentiment_change
-        costs_fix -= self.costs_fix
-        profit_next_years = self.yearly_revenue * 10 - self.costs_fix
+        return inhabitants_now, sentiment_now, bankroll_now
 
-        return inhabitants_now, sentiment_now, costs_fix, profit_next_years
-
-class Church(Ressource):
+class Church(Resource):
     def __init__(self):
-        super().__init__()
-        self.costs_fix = 500
-        self.yearly_revenue = -10
-        self.inhabitants_change = -15
-        self.sentiment_change = -2
+        super().__init__(costs_fix=500, yearly_revenue=-10, inhabitants_change=-15, sentiment_change=-2)
 
-class Supermarket(Ressource):
+class Supermarket(Resource):
     def __init__(self):
-        super().__init__()
-        self.costs_fix = 100
-        self.yearly_revenue = 20
-        self.inhabitants_change = 10
-        self.sentiment_change = 15
+        super().__init__(costs_fix=100, yearly_revenue=20, inhabitants_change=10, sentiment_change=15)
 
-class Pool(Ressource):
+class Pool(Resource):
     def __init__(self):
-        super().__init__()
-        self.costs_fix = 40
-        self.yearly_revenue = 10
-        self.inhabitants_change = 2
-        self.sentiment_change = 5
+        super().__init__(costs_fix=40, yearly_revenue=10, inhabitants_change=2, sentiment_change=5)
 
-class Bus(Ressource):
+class Train(Resource):
     def __init__(self):
-        super().__init__()
-        self.costs_fix = 80
-        self.yearly_revenue = 10
-        self.inhabitants_change = 5
-        self.sentiment_change = 5
+        super().__init__(costs_fix=400, yearly_revenue=100, inhabitants_change=20, sentiment_change=5)
 
-class Train(Ressource):
+class Bus(Resource):
     def __init__(self):
-        super().__init__()
-        self.costs_fix = 400
-        self.yearly_revenue = 100
-        self.inhabitants_change = 20
-        self.sentiment_change = 5
+        super().__init__(costs_fix=80, yearly_revenue=10, inhabitants_change=5, sentiment_change=5)
 
 
-def add_new_ressource(new_resource, resources_now, inhabitants_now, bankroll_now, sentiment_now):
+def add_new_ressource(new_ressources, ressources_now, inhabitants_now, bankroll_now, sentiment_now):
     """ This function calculates the effects for adding a new ressource in the community.
 
     """
-    resource_classes = {'church': Church, 'supermarket': Supermarket, 'pool': Pool, 'train': Train, 'bus': Bus}
-    if new_resource not in resources_now:
-        # Replace 'none yet' if it's the first resource
-        if 'none yet' in resources_now:
-            resources_now = resources_now.replace('none yet', new_resource)
-        else:
-            resources_now += f', {new_resource}' if resources_now else new_resource
-        print(resources_now)
-        # Create an instance of the resource and apply its effects
-        if 'church' in resources_now:
-            resource = resource_classes['church']()
-            inhabitants_now, sentiment_now, costs_fix, profit_next_years = resource.apply_effects(inhabitants_now, sentiment_now, costs_fix)
-        if 'pool' in resources_now:
-            resource = resource_classes['pool']()
-            inhabitants_now, sentiment_now, bankroll_now, profit_next_years = resource.apply_effects(inhabitants_now, sentiment_now, costs_fix)
-        if 'bus' in resources_now:
-            resource = resource_classes['bus']()
-            inhabitants_now, sentiment_now, bankroll_now, profit_next_years = resource.apply_effects(inhabitants_now, sentiment_now, costs_fix)
-        if 'train' in resources_now:
-            resource = resource_classes['train']()
-            inhabitants_now, sentiment_now, bankroll_now, profit_next_years = resource.apply_effects(inhabitants_now, sentiment_now, costs_fix)
-        return [resources_now, resource.costs_fix, resource.yearly_revenue, inhabitants_now, bankroll_now, sentiment_now, profit_next_years]
+    costs_fix = 0
+    yearly_revenue = 0
+    bankroll_now = 1000
+    sentiment_now = 50
+    inhabitants_now = 100
+    # Usage example
+    resources = {
+        "church": Church(),
+        "supermarket": Supermarket(),
+        "pool": Pool(),
+        "train": Train(),
+        "bus": Bus()
+    }
 
-    return [resources_now, 0, 0, inhabitants_now, bankroll_now, sentiment_now, 0]
+    # be careful with duplicates in the existing portfolio of ressources
+    if new_ressources not in ressources_now:
+        # add them into the portfolio if not done yet
+        if 'none yet' in ressources_now:
+            ressources_now = ressources_now.replace('none yet', '') + new_ressources
+        else:
+            ressources_now = ressources_now + ', ' + new_ressources
+
+        # Apply the effects of each resource
+        for resource_name, resource in resources.items():
+            if resource_name in ressources_now:
+                inhabitants_now, sentiment_now, _ = resource.apply_effects(inhabitants_now, sentiment_now)
+                costs_fix += resource.costs_fix
+                yearly_revenue += resource.yearly_revenue
+
+    # subtract the fixed costs also from the bankroll, calculate 10-year effects
+    bankroll_now = int(bankroll_now) - costs_fix
+    profit_next_years = yearly_revenue * 10 - costs_fix
+    return [ressources_now, costs_fix, yearly_revenue, inhabitants_now, bankroll_now, sentiment_now, profit_next_years]
 
 
 def delete_existing_ressource(existing_ressource, ressources_now, inhabitants_now, bankroll_now, sentiment_now):
     """ This function calculates the effects for deleting an existing ressource in the community.
 
     """
-    resource_classes = {'church': Church, 'supermarket': Supermarket, 'pool': Pool, 'train': Train, 'bus': Bus}
+    costs_fix = 0
+    yearly_revenue = 0
+    bankroll_now = 1000
+    sentiment_now = 50
+    inhabitants_now = 100
+    # Usage example
+    resources = {
+        "church": Church(),
+        "supermarket": Supermarket(),
+        "pool": Pool(),
+        "train": Train(),
+        "bus": Bus()
+    }
+
     # be careful with duplicates in the existing portfolio of ressources
     if existing_ressource in ressources_now:
         # kick them out of the portfolio
@@ -312,14 +306,20 @@ def delete_existing_ressource(existing_ressource, ressources_now, inhabitants_no
             ressources_now = ressources_now.replace(', ' + str(existing_ressource), '')
             ressources_now = ressources_now.replace(str(existing_ressource), '')
         else:
-            ressources_now = existing_ressource
+            ressources_now = existing_ressource.replace(str(existing_ressource), '')
 
-        # Create an instance of the resource and apply its effects
-        resource = resource_classes[existing_ressource]()
-        inhabitants_now, sentiment_now, bankroll_now, profit_next_years = resource.apply_effects(inhabitants_now, sentiment_now, bankroll_now)
-        return [ressources_now, resource.costs_fix, resource.yearly_revenue, inhabitants_now, bankroll_now, sentiment_now, profit_next_years]
+        # Apply the effects of each resource
+        for resource_name, resource in resources.items():
+            if resource_name in ressources_now:
+                inhabitants_now, sentiment_now, _ = resource.apply_effects(inhabitants_now, sentiment_now)
+                costs_fix += resource.costs_fix
+                yearly_revenue += resource.yearly_revenue
 
-    return [ressources_now, 0, 0, inhabitants_now, bankroll_now, sentiment_now, 0]
+    # subtract the fixed costs also from the bankroll, calculate 10-year effects
+    #print(ressources_now)
+    bankroll_now = int(bankroll_now) - costs_fix
+    profit_next_years = yearly_revenue * 10 - costs_fix
+    return [ressources_now, costs_fix, yearly_revenue, inhabitants_now, bankroll_now, sentiment_now, profit_next_years]
 
 
 # START: set the choices for new/existing ressources in your community, then start GUI
