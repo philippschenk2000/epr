@@ -207,6 +207,7 @@ def getdata(possible_ressources):
 
     root.mainloop()
 
+
 class Resource:
     def __init__(self, costs_fix=0, yearly_revenue=0, inhabitants_change=0, sentiment_change=0):
         self.costs_fix = costs_fix
@@ -221,25 +222,62 @@ class Resource:
         sentiment_now += self.sentiment_change
         return inhabitants_now, sentiment_now, bankroll_now
 
+
+class Financials:
+    def __init__(self, costs_fix=0, yearly_revenue=0, inhabitants_change=0, sentiment_change=0):
+        self.costs_fix = costs_fix
+        self.yearly_revenue = yearly_revenue
+        self.inhabitants_change = inhabitants_change
+        self.sentiment_change = sentiment_change
+
+    def apply_effects_financials(self, costs_fix, yearly_revenue, bankroll_now=None):
+        costs_fix = int(costs_fix)
+        yearly_revenue = int(yearly_revenue)
+        costs_fix += self.yearly_revenue
+        yearly_revenue += self.sentiment_change
+        return costs_fix, yearly_revenue, bankroll_now
+
 class Church(Resource):
     def __init__(self):
-        super().__init__(costs_fix=500, yearly_revenue=-10, inhabitants_change=-15, sentiment_change=-2)
+        super().__init__(inhabitants_change=-15, sentiment_change=-2)
 
 class Supermarket(Resource):
     def __init__(self):
-        super().__init__(costs_fix=100, yearly_revenue=20, inhabitants_change=10, sentiment_change=15)
+        super().__init__(inhabitants_change=10, sentiment_change=15)
 
 class Pool(Resource):
     def __init__(self):
-        super().__init__(costs_fix=40, yearly_revenue=10, inhabitants_change=2, sentiment_change=5)
+        super().__init__(inhabitants_change=2, sentiment_change=5)
 
 class Train(Resource):
     def __init__(self):
-        super().__init__(costs_fix=400, yearly_revenue=100, inhabitants_change=20, sentiment_change=5)
+        super().__init__(inhabitants_change=20, sentiment_change=5)
 
 class Bus(Resource):
     def __init__(self):
-        super().__init__(costs_fix=80, yearly_revenue=10, inhabitants_change=5, sentiment_change=5)
+        super().__init__(inhabitants_change=5, sentiment_change=5)
+
+
+class Church_financials(Financials):
+    def __init__(self):
+        super().__init__(costs_fix=500, yearly_revenue=-10)
+
+class Supermarket_financials(Financials):
+    def __init__(self):
+        super().__init__(costs_fix=100, yearly_revenue=20)
+
+class Pool_financials(Financials):
+    def __init__(self):
+        super().__init__(costs_fix=40, yearly_revenue=10)
+
+class Train_financials(Financials):
+    def __init__(self):
+        super().__init__(costs_fix=400, yearly_revenue=100)
+
+class Bus_financials(Financials):
+    def __init__(self):
+        super().__init__(costs_fix=80, yearly_revenue=10)
+
 
 
 def add_new_ressource(new_ressources, ressources_now, inhabitants_now, bankroll_now, sentiment_now):
@@ -260,6 +298,14 @@ def add_new_ressource(new_ressources, ressources_now, inhabitants_now, bankroll_
         "bus": Bus()
     }
 
+    financials = {
+        "church": Church_financials(),
+        "supermarket": Supermarket_financials(),
+        "pool": Pool_financials(),
+        "train": Train_financials(),
+        "bus": Bus_financials()
+    }
+
     # be careful with duplicates in the existing portfolio of ressources
     if new_ressources not in ressources_now:
         # add them into the portfolio if not done yet
@@ -272,8 +318,11 @@ def add_new_ressource(new_ressources, ressources_now, inhabitants_now, bankroll_
         for resource_name, resource in resources.items():
             if resource_name in ressources_now:
                 inhabitants_now, sentiment_now, _ = resource.apply_effects(inhabitants_now, sentiment_now)
-                costs_fix += resource.costs_fix
-                yearly_revenue += resource.yearly_revenue
+        # Apply the effects of each resource
+        for resource_name, financials in financials.items():
+            if resource_name in ressources_now:
+                costs_fix, yearly_revenue, _ = financials.apply_effects_financials(costs_fix, yearly_revenue)
+
 
     # subtract the fixed costs also from the bankroll, calculate 10-year effects
     bankroll_now = int(bankroll_now) - costs_fix
@@ -298,6 +347,13 @@ def delete_existing_ressource(existing_ressource, ressources_now, inhabitants_no
         "train": Train(),
         "bus": Bus()
     }
+    financials = {
+        "church": Church_financials(),
+        "supermarket": Supermarket_financials(),
+        "pool": Pool_financials(),
+        "train": Train_financials(),
+        "bus": Bus_financials()
+    }
 
     # be careful with duplicates in the existing portfolio of ressources
     if existing_ressource in ressources_now:
@@ -312,8 +368,10 @@ def delete_existing_ressource(existing_ressource, ressources_now, inhabitants_no
         for resource_name, resource in resources.items():
             if resource_name in ressources_now:
                 inhabitants_now, sentiment_now, _ = resource.apply_effects(inhabitants_now, sentiment_now)
-                costs_fix += resource.costs_fix
-                yearly_revenue += resource.yearly_revenue
+        # Apply the effects of each resource
+        for resource_name, financials in financials.items():
+            if resource_name in ressources_now:
+                costs_fix, yearly_revenue, _ = financials.apply_effects_financials(costs_fix, yearly_revenue)
 
     # subtract the fixed costs also from the bankroll, calculate 10-year effects
     #print(ressources_now)
