@@ -279,7 +279,6 @@ class Bus_financials(Financials):
         super().__init__(costs_fix=80, yearly_revenue=10)
 
 
-
 def add_new_ressource(new_ressources, ressources_now, inhabitants_now, bankroll_now, sentiment_now):
     """ This function calculates the effects for adding a new ressource in the community.
 
@@ -297,7 +296,6 @@ def add_new_ressource(new_ressources, ressources_now, inhabitants_now, bankroll_
         "train": Train(),
         "bus": Bus()
     }
-
     financials = {
         "church": Church_financials(),
         "supermarket": Supermarket_financials(),
